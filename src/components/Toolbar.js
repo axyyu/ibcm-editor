@@ -7,6 +7,9 @@ class Toolbar extends React.Component {
       <div id='toolbar'>
         <h1>IBCM Editor</h1>
         <div>
+          <button onClick={this.props.uploader.bind(this)} title='Upload'>
+            <i className='fas fa-file-upload'></i>
+          </button>
           <button onClick={this.props.resetter.bind(this)} title='Reset'>
             <i className='fas fa-undo-alt'></i>
           </button>
