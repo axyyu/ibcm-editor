@@ -8,7 +8,7 @@ function exportCode(ibcm) {
       !(ibcm[i].opcode === '0' && ibcm[i].body === '000') &&
       lastHalt === ibcm.length
     ) {
-      lastHalt = i + 2;
+      lastHalt = i + 1;
     }
 
     let line = `${ibcm[i].opcode + ibcm[i].body}\t${i
@@ -22,7 +22,7 @@ function exportCode(ibcm) {
 
   var outputStr = '';
   for (var j = 0; j < lastHalt; j++) {
-    let line = outputStr[j].padEnd(maxLength, ' ') + '\t' + ibcm[j].comments;
+    let line = codeLines[j].padEnd(maxLength, ' ') + '\t' + ibcm[j].comments;
     outputStr += line + '\n';
   }
 
