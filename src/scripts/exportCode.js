@@ -1,16 +1,29 @@
 function exportCode(ibcm) {
+  var codeLines = [];
+  var maxLength = 0;
+  var lastHalt = ibcm.length;
+
+  for (var i = ibcm.length - 1; i >= 0; i--) {
+    if (
+      !(ibcm[i].opcode === '0' && ibcm[i].body === '000') &&
+      lastHalt === ibcm.length
+    ) {
+      lastHalt = i + 2;
+    }
+
+    let line = `${ibcm[i].opcode + ibcm[i].body}\t${i
+      .toString(16)
+      .padStart(3, '0')}\t${ibcm[i].description}`;
+
+    if (line.length > maxLength) maxLength = line.length;
+
+    codeLines.unshift(line.trimRight());
+  }
+
   var outputStr = '';
-  for (var i = 0; i < ibcm.length; i++) {
-    var line =
-      ibcm[i].opcode +
-      ibcm[i].body +
-      '\t' +
-      i.toString(16).padStart(3, '0') +
-      '\t' +
-      ibcm[i].description +
-      '\t' +
-      ibcm[i].comments;
-    outputStr += line.trimRight() + '\n';
+  for (var j = 0; j < lastHalt; j++) {
+    let line = outputStr[j].padEnd(maxLength, ' ') + '\t' + ibcm[j].comments;
+    outputStr += line + '\n';
   }
 
   const element = document.createElement('a');
@@ -20,4 +33,5 @@ function exportCode(ibcm) {
   document.body.appendChild(element);
   element.click();
 }
+
 export default exportCode;
