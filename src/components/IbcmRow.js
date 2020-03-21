@@ -3,6 +3,7 @@ import IbcmOpcode from './IbcmOpcode';
 import IbcmComments from './IbcmComments';
 import IbcmBody from './IbcmBody';
 import IbcmDescription from './IbcmDescription';
+import IbcmInsert from './IbcmInsert';
 import ibcmOpcodes from '../scripts/ibcmOpcodes';
 
 function getDescription(row) {
@@ -67,6 +68,9 @@ class IbcmRow extends React.Component {
     if (!code.userEdit) code.description = getDescription(code);
     this.props.editor(this.props.addr, code);
   }
+  insertRow() {
+    this.props.insertRow(this.props.addr);
+  }
   render() {
     return (
       <div className='ibcm-row' id={this.props.addr}>
@@ -93,6 +97,7 @@ class IbcmRow extends React.Component {
           comments={this.props.ibcm.comments}
           updateComments={this.updateComments.bind(this)}
         ></IbcmComments>
+        <IbcmInsert insertRow={this.insertRow.bind(this)}></IbcmInsert>
       </div>
     );
   }

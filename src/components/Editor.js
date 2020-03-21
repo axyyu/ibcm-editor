@@ -31,7 +31,7 @@ class Editor extends React.Component {
   constructor() {
     super();
     let initialIbcm = [];
-    for (var i = 0; i < 100; i++) {
+    for (var i = 0; i < 20; i++) {
       initialIbcm.push(blankIbcm);
     }
     this.state = { ibcm: initialIbcm };
@@ -51,6 +51,11 @@ class Editor extends React.Component {
   exportIbcm() {
     exportCode(this.state.ibcm);
   }
+  insertRow(index) {
+    const ibcm = [...this.state.ibcm];
+    ibcm.splice(index + 1, 0, blankIbcm);
+    this.setState({ ibcm: ibcm });
+  }
   render() {
     const rows = this.state.ibcm.map((row, index) => (
       <IbcmRow
@@ -58,6 +63,7 @@ class Editor extends React.Component {
         addr={index}
         ibcm={row}
         editor={this.updateIbcm.bind(this)}
+        insertRow={this.insertRow.bind(this)}
       ></IbcmRow>
     ));
     return (
