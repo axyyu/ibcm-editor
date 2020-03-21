@@ -14,7 +14,7 @@
 importScripts("https://storage.googleapis.com/workbox-cdn/releases/4.3.1/workbox-sw.js");
 
 importScripts(
-  "/ibcm-editor/precache-manifest.9e3010346558d10f092d3e4835a803a8.js"
+  "/ibcm-editor/precache-manifest.fdcae9d7b4f379a328ae1f492db2694d.js"
 );
 
 self.addEventListener('message', (event) => {
