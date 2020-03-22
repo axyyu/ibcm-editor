@@ -1,16 +1,16 @@
-import React from 'react';
-import Toolbar from './Toolbar';
-import IbcmHeader from './IbcmHeader';
-import IbcmRow from './IbcmRow';
-import exportCode from '../scripts/exportCode';
-import uploadCode from '../scripts/uploadCode';
-import IbcmUpload from './IbcmUpload';
+import React from "react";
+import Toolbar from "./Toolbar";
+import IbcmHeader from "./IbcmHeader";
+import IbcmRow from "./IbcmRow";
+import exportCode from "../scripts/exportCode";
+import uploadCode from "../scripts/uploadCode";
+import IbcmUpload from "./IbcmUpload";
 
 const blankIbcm = {
-  opcode: '0',
-  body: '000',
-  comments: '',
-  description: 'halt',
+  opcode: "0",
+  body: "000",
+  comments: "",
+  description: "halt",
   userEdit: false
 };
 
@@ -46,12 +46,17 @@ class Editor extends React.Component {
     ibcm.splice(index + 1, 0, blankIbcm);
     this.setState({ ibcm: ibcm });
   }
+  deleteRow(index) {
+    const ibcm = [...this.state.ibcm];
+    ibcm.splice(index, 1);
+    this.setState({ ibcm: ibcm });
+  }
   async uploadFile(file) {
     try {
       const ibcm = await uploadCode(file);
       this.setState({ ibcm: ibcm, uploadIbcm: false });
     } catch (e) {
-      alert('Error reading file.');
+      alert("Error reading file.");
       console.log(e);
       this.setState({ uploadIbcm: false });
     }
@@ -64,10 +69,11 @@ class Editor extends React.Component {
         ibcm={row}
         editor={this.updateIbcm.bind(this)}
         insertRow={this.insertRow.bind(this)}
+        deleteRow={this.deleteRow.bind(this)}
       ></IbcmRow>
     ));
     return (
-      <div id='editor'>
+      <div id="editor">
         <Toolbar
           resetter={this.resetIbcm.bind(this)}
           exportter={this.exportIbcm.bind(this)}

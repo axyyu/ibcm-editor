@@ -1,30 +1,31 @@
-import React from 'react';
-import IbcmOpcode from './IbcmOpcode';
-import IbcmComments from './IbcmComments';
-import IbcmBody from './IbcmBody';
-import IbcmDescription from './IbcmDescription';
-import IbcmInsert from './IbcmInsert';
-import ibcmOpcodes from '../scripts/ibcmOpcodes';
+import React from "react";
+import IbcmOpcode from "./IbcmOpcode";
+import IbcmComments from "./IbcmComments";
+import IbcmBody from "./IbcmBody";
+import IbcmDescription from "./IbcmDescription";
+import IbcmInsert from "./IbcmInsert";
+import IbcmDelete from "./IbcmDelete";
+import ibcmOpcodes from "../scripts/ibcmOpcodes";
 
 function getDescription(row) {
-  let desc = '';
+  let desc = "";
   try {
     let body = row.body;
     let binary = parseInt(body, 16)
       .toString(2)
-      .padStart(12, '0');
+      .padStart(12, "0");
     switch (row.opcode) {
-      case '0':
-        desc = 'halt';
+      case "0":
+        desc = "halt";
         break;
-      case '1':
-        let io = binary.charAt(0) === '0' ? 'input' : 'output';
-        let chartype = binary.charAt(1) === '0' ? 'hex' : 'ascii';
+      case "1":
+        let io = binary.charAt(0) === "0" ? "input" : "output";
+        let chartype = binary.charAt(1) === "0" ? "hex" : "ascii";
         desc = `${io} ${chartype}`;
         break;
-      case '2':
-        let shift = binary.charAt(0) === '0' ? 'shift' : 'rotate';
-        let dir = binary.charAt(1) === '0' ? 'left' : 'right';
+      case "2":
+        let shift = binary.charAt(0) === "0" ? "shift" : "rotate";
+        let dir = binary.charAt(1) === "0" ? "left" : "right";
         let count = parseInt(binary.substring(binary.length - 3), 2);
         desc = `${shift} ${dir} by ${count}`;
         break;
@@ -71,13 +72,16 @@ class IbcmRow extends React.Component {
   insertRow() {
     this.props.insertRow(this.props.addr);
   }
+  deleteRow() {
+    this.props.deleteRow(this.props.addr);
+  }
   render() {
     return (
-      <div className='ibcm-row' id={this.props.addr}>
-        <div className='ibcm-address'>
-          {this.props.addr.toString(16).padStart(3, '0')}
+      <div className="ibcm-row" id={this.props.addr}>
+        <div className="ibcm-address">
+          {this.props.addr.toString(16).padStart(3, "0")}
         </div>
-        <div className='ibcm-value'>
+        <div className="ibcm-value">
           <IbcmOpcode
             opcode={this.props.ibcm.opcode}
             updateOpcode={this.updateOpcode.bind(this)}
@@ -98,6 +102,7 @@ class IbcmRow extends React.Component {
           updateComments={this.updateComments.bind(this)}
         ></IbcmComments>
         <IbcmInsert insertRow={this.insertRow.bind(this)}></IbcmInsert>
+        <IbcmDelete deleteRow={this.deleteRow.bind(this)}></IbcmDelete>
       </div>
     );
   }
