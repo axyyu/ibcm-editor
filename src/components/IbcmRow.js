@@ -101,8 +101,10 @@ class IbcmRow extends React.Component {
           comments={this.props.ibcm.comments}
           updateComments={this.updateComments.bind(this)}
         ></IbcmComments>
-        <IbcmInsert insertRow={this.insertRow.bind(this)}></IbcmInsert>
-        <IbcmDelete deleteRow={this.deleteRow.bind(this)}></IbcmDelete>
+        <div className="ibcm-buttons">
+          <IbcmInsert insertRow={this.insertRow.bind(this)}></IbcmInsert>
+          <IbcmDelete deleteRow={this.deleteRow.bind(this)}></IbcmDelete>
+        </div>
       </div>
     );
   }

@@ -65,7 +65,7 @@ html {
 
   .ibcm-row {
     display: grid;
-    grid-template-columns: 50px 100px 200px auto 1em 1em;
+    grid-template-columns: 50px 100px 200px auto 2.5em;
     grid-column-gap: 32px;
     padding: 8px 16px;
 
@@ -109,7 +109,7 @@ html {
       }
     }
 
-    .ibcm-insert {
+    .ibcm-buttons {
       button {
         outline: none;
         border: none;
@@ -121,6 +121,10 @@ html {
           cursor: pointer;
         }
       }
+    }
+
+    .ibcm-insert {
+      margin-right: 15px;
     }
 
     .ibcm-address {
