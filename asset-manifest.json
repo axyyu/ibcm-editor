@@ -1,14 +1,14 @@
 {
   "files": {
     "main.css": "/ibcm-editor/static/css/main.e2091c70.chunk.css",
-    "main.js": "/ibcm-editor/static/js/main.2d5318df.chunk.js",
-    "main.js.map": "/ibcm-editor/static/js/main.2d5318df.chunk.js.map",
+    "main.js": "/ibcm-editor/static/js/main.7fe13972.chunk.js",
+    "main.js.map": "/ibcm-editor/static/js/main.7fe13972.chunk.js.map",
     "runtime-main.js": "/ibcm-editor/static/js/runtime-main.ebd2d36d.js",
     "runtime-main.js.map": "/ibcm-editor/static/js/runtime-main.ebd2d36d.js.map",
     "static/js/2.67819529.chunk.js": "/ibcm-editor/static/js/2.67819529.chunk.js",
     "static/js/2.67819529.chunk.js.map": "/ibcm-editor/static/js/2.67819529.chunk.js.map",
     "index.html": "/ibcm-editor/index.html",
-    "precache-manifest.dab9b81d8b0c2ade341a1e57373634ff.js": "/ibcm-editor/precache-manifest.dab9b81d8b0c2ade341a1e57373634ff.js",
+    "precache-manifest.d86b2fb2aad6abbe3fe8ff456e050440.js": "/ibcm-editor/precache-manifest.d86b2fb2aad6abbe3fe8ff456e050440.js",
     "service-worker.js": "/ibcm-editor/service-worker.js",
     "static/css/main.e2091c70.chunk.css.map": "/ibcm-editor/static/css/main.e2091c70.chunk.css.map",
     "static/js/2.67819529.chunk.js.LICENSE.txt": "/ibcm-editor/static/js/2.67819529.chunk.js.LICENSE.txt"
@@ -17,6 +17,6 @@
     "static/js/runtime-main.ebd2d36d.js",
     "static/js/2.67819529.chunk.js",
     "static/css/main.e2091c70.chunk.css",
-    "static/js/main.2d5318df.chunk.js"
+    "static/js/main.7fe13972.chunk.js"
   ]
 }
