@@ -5,7 +5,12 @@ function exportCode(ibcm) {
 
   for (var i = ibcm.length - 1; i >= 0; i--) {
     if (
-      !(ibcm[i].opcode === '0' && ibcm[i].body === '000') &&
+      !(
+        ibcm[i].opcode === '0' &&
+        ibcm[i].body === '000' &&
+        ibcm[i].body === '' &&
+        ibcm[i].description === ''
+      ) &&
       lastHalt === ibcm.length
     ) {
       lastHalt = i + 2;
