@@ -14,8 +14,9 @@ function exportCode(ibcm) {
 
   var outputStr = '';
   for (var j = 0; j < ibcm.length; j++) {
-    let line = codeLines[j].padEnd(maxLength, ' ') + '\t' + ibcm[j].comments;
-    outputStr += line + '\n';
+    outputStr += `${codeLines[j].padEnd(maxLength, ' ')}\t${ibcm[
+      j
+    ].comments.trimRight()}\n`;
   }
 
   const element = document.createElement('a');
