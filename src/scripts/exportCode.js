@@ -1,21 +1,8 @@
 function exportCode(ibcm) {
   var codeLines = [];
   var maxLength = 0;
-  var lastHalt = ibcm.length;
 
   for (var i = ibcm.length - 1; i >= 0; i--) {
-    if (
-      !(
-        ibcm[i].opcode === '0' &&
-        ibcm[i].body === '000' &&
-        ibcm[i].body === '' &&
-        ibcm[i].description === ''
-      ) &&
-      lastHalt === ibcm.length
-    ) {
-      lastHalt = i + 2;
-    }
-
     let line = `${ibcm[i].opcode + ibcm[i].body}\t${i
       .toString(16)
       .padStart(3, '0')}\t${ibcm[i].description}`;
@@ -26,7 +13,7 @@ function exportCode(ibcm) {
   }
 
   var outputStr = '';
-  for (var j = 0; j < lastHalt; j++) {
+  for (var j = 0; j < ibcm.length; j++) {
     let line = codeLines[j].padEnd(maxLength, ' ') + '\t' + ibcm[j].comments;
     outputStr += line + '\n';
   }
