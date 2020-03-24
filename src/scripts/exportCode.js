@@ -8,7 +8,7 @@ function exportCode(ibcm) {
       !(ibcm[i].opcode === '0' && ibcm[i].body === '000') &&
       lastHalt === ibcm.length
     ) {
-      lastHalt = i + 1;
+      lastHalt = i + 2;
     }
 
     let line = `${ibcm[i].opcode + ibcm[i].body}\t${i
